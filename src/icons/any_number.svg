@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <!--
+    Two-tone, branding-driven icon.
+    - Set `color` (currentColor) to the brand PRIMARY color.
+    - The container uses the same color at 20% opacity (= "surface variant"
+      replaced by 20% of primary), so a single brand color drives both tones.
+  -->
+  <rect x="2" y="2" width="20" height="20" rx="5" fill="currentColor" fill-opacity="0.2" />
+  <g fill="currentColor">
+    <rect x="9.1" y="6.5" width="1.8" height="11" rx="0.9" />
+    <rect x="12.9" y="6.5" width="1.8" height="11" rx="0.9" />
+    <rect x="6.5" y="9.2" width="11" height="1.8" rx="0.9" />
+    <rect x="6.5" y="13" width="11" height="1.8" rx="0.9" />
+  </g>
+</svg>
