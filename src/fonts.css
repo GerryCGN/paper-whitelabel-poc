@@ -1,0 +1,10 @@
+/* MaterialCommunityIcons font (Paper's default icon set).
+   Defined in a Vite-processed CSS file so the font is emitted as a hashed
+   asset with a correct, base-aware URL — works on GitHub Pages subpaths. */
+@font-face {
+  font-family: 'MaterialCommunityIcons';
+  src: url('./assets/MaterialCommunityIcons.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

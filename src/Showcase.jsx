@@ -41,6 +41,7 @@ import {
 import { PaperProvider } from 'react-native-paper';
 
 import { ThemedIcon, themedIconNames } from './icons/ThemedIcon.jsx';
+import { paperSettings } from './paperIcon.jsx';
 
 /* ---------- layout helpers ---------- */
 
@@ -82,7 +83,7 @@ const containerOverride = (c) => ({
 function Branded({ overrides, children }) {
   const theme = useTheme();
   const t = { ...theme, colors: { ...theme.colors, ...overrides(theme.colors) } };
-  return <PaperProvider theme={t}>{children}</PaperProvider>;
+  return <PaperProvider theme={t} settings={paperSettings}>{children}</PaperProvider>;
 }
 
 function ModHint({ children }) {
@@ -885,7 +886,7 @@ function ModifiedComponentsPage({ onBack }) {
               </View>
               <View style={{ gap: 6 }}>
                 <Text variant="labelSmall" style={{ color: c.onSurfaceVariant }}>After</Text>
-                <PaperProvider theme={applyOverrides(theme, m.overrides)}>
+                <PaperProvider theme={applyOverrides(theme, m.overrides)} settings={paperSettings}>
                   <m.Demo />
                 </PaperProvider>
               </View>

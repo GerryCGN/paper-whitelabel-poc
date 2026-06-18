@@ -5,6 +5,7 @@ import { buildTheme, onColorFor } from './theme.js';
 import Showcase from './Showcase.jsx';
 import PhoneFrame from './PhoneFrame.jsx';
 import docMarkdown from '../docs/color-conversion.md?raw';
+import { paperSettings } from './paperIcon.jsx';
 
 /* The control panel uses plain DOM elements (rendered by react-dom) so we can
    use the native color picker. The preview uses react-native-paper components. */
@@ -558,7 +559,7 @@ export default function App() {
         </div>
 
         <PhoneFrame mode={mode}>
-          <PaperProvider theme={theme}>
+          <PaperProvider theme={theme} settings={paperSettings}>
             <Showcase />
           </PaperProvider>
         </PhoneFrame>

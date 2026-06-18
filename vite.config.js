@@ -22,7 +22,12 @@ export default defineConfig(({ command }) => {
       extensions: ['.web.js', '.web.jsx', '.web.ts', '.web.tsx', '.js', '.jsx', '.ts', '.tsx', '.json'],
     },
     optimizeDeps: {
-      include: ['react-native-web', 'react-native-paper', 'react-native-vector-icons'],
+      include: [
+        'react-native-web',
+        'react-native-paper',
+        'react-native-vector-icons',
+        'react-native-vector-icons/MaterialCommunityIcons',
+      ],
       esbuildOptions: {
         resolveExtensions: ['.web.js', '.js', '.jsx', '.ts', '.tsx'],
         loader: { '.js': 'jsx' },
