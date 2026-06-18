@@ -41,7 +41,7 @@ import {
 import { PaperProvider } from 'react-native-paper';
 
 import { ThemedIcon, themedIconNames } from './icons/ThemedIcon.jsx';
-import { paperSettings } from './paperIcon.jsx';
+import { paperSettings, SvgIcon } from './paperIcon.jsx';
 
 /* ---------- layout helpers ---------- */
 
@@ -96,6 +96,14 @@ function ModHint({ children }) {
       </Text>
     </View>
   );
+}
+
+// Selected-chip check rendered as inline SVG (Paper's built-in check uses its
+// internal MaterialCommunityIcon, which we don't rely on). useTheme() resolves
+// to the nearest provider, so the color is correct inside Branded chips too.
+function ChipCheck() {
+  const theme = useTheme();
+  return <SvgIcon name="check" size={18} color={theme.colors.onSecondaryContainer} />;
 }
 
 /* ---------- individual demos ---------- */
@@ -315,7 +323,14 @@ function ChipsDemo() {
       <Row>
         <Chip icon="information" onPress={() => {}}>Assist</Chip>
         <Branded overrides={containerOverride}>
-          <Chip selected={sel} showSelectedOverlay onPress={() => setSel((v) => !v)}>Filter</Chip>
+          <Chip
+            selected={sel}
+            showSelectedCheck={false}
+            icon={sel ? () => <ChipCheck /> : undefined}
+            onPress={() => setSel((v) => !v)}
+          >
+            Filter
+          </Chip>
         </Branded>
         <Chip icon="account" onClose={() => {}}>Input</Chip>
         <Chip mode="outlined" avatar={<Avatar.Text size={24} label="K" />}>Avatar</Chip>
@@ -542,7 +557,7 @@ function AppbarDemo() {
   return (
     <View style={{ gap: 12 }}>
       <Appbar.Header elevated style={{ borderRadius: 8, overflow: 'hidden' }}>
-        <Appbar.BackAction onPress={() => {}} />
+        <Appbar.Action icon="arrow-left" onPress={() => {}} />
         <Appbar.Content title="Title" subtitle="Subtitle" />
         <Appbar.Action icon="magnify" onPress={() => {}} />
         <Appbar.Action icon="dots-vertical" onPress={() => {}} />
@@ -780,7 +795,12 @@ function TokenPill({ name, value }) {
 function ChipExample() {
   const [sel, setSel] = useState(true);
   return (
-    <Chip selected={sel} showSelectedOverlay onPress={() => setSel((v) => !v)}>
+    <Chip
+      selected={sel}
+      showSelectedCheck={false}
+      icon={sel ? () => <ChipCheck /> : undefined}
+      onPress={() => setSel((v) => !v)}
+    >
       Filter
     </Chip>
   );
@@ -843,7 +863,7 @@ function ModifiedComponentsPage({ onBack }) {
   return (
     <View style={{ flex: 1, backgroundColor: c.background }}>
       <Appbar.Header>
-        <Appbar.BackAction onPress={onBack} />
+        <Appbar.Action icon="arrow-left" onPress={onBack} />
         <Appbar.Content title="Modified Components" subtitle="Token reassignments → brand color" />
       </Appbar.Header>
       <ScrollView contentContainerStyle={{ padding: 16, paddingBottom: 40 }} style={{ flex: 1 }}>

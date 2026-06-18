@@ -134,7 +134,7 @@ const PATHS = {
   'page-last': mdiPageLast,
 };
 
-function SvgIcon({ name, color = '#000', size = 24 }) {
+export function SvgIcon({ name, color = '#000', size = 24 }) {
   const path = PATHS[name];
   if (!path) {
     if (typeof console !== 'undefined') {
@@ -158,20 +158,4 @@ function SvgIcon({ name, color = '#000', size = 24 }) {
 export const paperSettings = {
   icon: ({ name, color, size }) => <SvgIcon name={name} color={color} size={size} />,
 };
-
-// Paper's Icon.js imports this named export from MaterialCommunityIcon, so the
-// alias target must provide it too (web values).
-export const accessibilityProps = { role: 'img', focusable: false };
-
-/**
- * Default export used to REPLACE react-native-paper's internal
- * `MaterialCommunityIcon` (via a Vite alias in vite.config.js). Some Paper
- * components (Appbar.BackAction, the selected Chip check, ...) render that
- * module directly instead of going through `settings.icon`, so aliasing it to
- * this inline-SVG renderer makes those icons work too — with the color Paper
- * intends (e.g. the check is readable on a primary chip).
- */
-export default function MaterialCommunityIcon({ name, color, size = 24 }) {
-  return <SvgIcon name={name} color={color} size={size} />;
-}
 
